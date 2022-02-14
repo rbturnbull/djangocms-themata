@@ -1,0 +1,68 @@
+{% load cms_tags sekizai_tags menu_tags bootstrap_tags themata static %}
+<html>
+    <head>
+        <title>{% if title %}{{ title }}{% else %}{% page_attribute "page_title" %}{% endif %}</title>
+
+        {% link_stylesheets %}
+        <link href="{% static 'themata/css/navbar.css' %}" rel="stylesheet">
+        
+        {% render_block "css" %}
+    </head>
+    <body>
+        <div>
+            {% cms_toolbar %}
+        </div>
+        <div class="themata-body">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>    
+            
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        {% main_menu "bootstrap4/menu/navbar.html" %}
+                    </ul>
+                    {% url 'watson:search' as search_url %}
+                    {% if search_url %}
+                        <form class="form-inline my-2 my-lg-0" action="{{ search_url }}">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q" value="{{request.GET.q}}">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>              
+                    {% endif %}
+                </div>
+            </nav>
+            <header class="bg-image-full">
+                {% static_placeholder 'header' %}
+            </header>
+            
+            <!-- start content -->
+            {% placeholder "content" %}
+            {% block content %}
+            {% endblock %}
+            <!-- end content -->
+            
+            <footer class="p-3 mt-5 mb-0 bg-primary text-white">
+                {% static_placeholder 'footer' %}
+            </footer>     
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <!-- Your stuff: Third-party javascript libraries go here -->
+        <script src="https://use.fontawesome.com/releases/v5.15.0/js/all.js"></script>
+
+        <script>
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+            $(".publications-container").addClass("container");
+        });        
+        </script>
+  
+        <!-- start js -->
+        {% render_block "js" %}
+        <!-- end js -->
+    </body>
+</html>
+

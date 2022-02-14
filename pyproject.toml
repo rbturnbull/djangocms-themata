@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "djangocms-themata"
+version = "0.1.0"
+description = "A set of themes for Django CMS projects."
+authors = ["Robert Turnbull <robert.turnbull@unimelb.edu.au>"]
+license = "Apache-2.0"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^3.2"
+django-cms = "^3.9.0"
+djangocms-bootstrap = "^1.1.2"
+djangocms-page-meta = "^1.0.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["setuptools >= 40.6.0", "poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

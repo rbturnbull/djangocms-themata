@@ -1,0 +1,8 @@
+{% load static %}
+{% for stylesheet in stylesheets %}
+    <link rel="stylesheet" href="{%if stylesheet.static %}{% static stylesheet.href%}{% else %}{{stylesheet.href}}{% endif %}" 
+        {% if stylesheet.integrity %}
+            integrity="{{ stylesheet.integrity }}" crossorigin="anonymous"
+        {% endif %}
+    >
+{% endfor %}
