@@ -1,9 +1,19 @@
 [tool.poetry]
 name = "djangocms-themata"
-version = "0.1.0"
+version = "0.1.1"
 description = "A set of themes for Django CMS projects."
 authors = ["Robert Turnbull <robert.turnbull@unimelb.edu.au>"]
 license = "Apache-2.0"
+readme = "README.rst"
+homepage = "https://github.com/rbturnbull/djangocms-themata"
+repository = "https://github.com/rbturnbull/djangocms-themata"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: Apache Software License",
+    "Framework :: Django CMS",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
 
 [tool.poetry.dependencies]
 python = "^3.8"
