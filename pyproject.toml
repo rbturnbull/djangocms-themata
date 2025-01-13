@@ -16,11 +16,11 @@ classifiers = [
 
 
 [tool.poetry.dependencies]
-python = "^3.8"
-Django = "^3.2"
-django-cms = "^3.9.0"
-djangocms-bootstrap = "^1.1.2"
-djangocms-page-meta = "^1.0.1"
+python = ">=3.8,<4.0"
+Django = ">=3.2"
+django-cms = ">=3.9.0"
+djangocms-bootstrap = ">=1.1.2"
+djangocms-page-meta = ">=1.0.1"
 
 [tool.poetry.dev-dependencies]
 
