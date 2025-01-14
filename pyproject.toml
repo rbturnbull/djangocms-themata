@@ -23,6 +23,15 @@ djangocms-bootstrap = ">=1.1.2"
 djangocms-page-meta = ">=1.0.1"
 
 [tool.poetry.dev-dependencies]
+pytest-django = ">=4.9.0"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+pythonpath = "."
+testpaths = ["tests"]  # Restrict pytest to look for tests only in the `tests` directory
+django_find_project = false  # Optional: avoids unexpected settings detection
+DJANGO_SETTINGS_MODULE = "tests.settings"
+
 
 [build-system]
 requires = ["setuptools >= 40.6.0", "poetry-core>=1.0.0"]

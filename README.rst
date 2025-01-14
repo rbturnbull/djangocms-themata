@@ -2,7 +2,7 @@
 djangocms-themata
 ==================
 
-A set of themes for Django CMS projects.
+A set of Bootstrap themes for Django CMS projects.
 
 Installation
 ============
@@ -23,27 +23,28 @@ Or install directory from Github:
 Usage
 ========
 
-Start with a Django project set up with `Django CMS <https://docs.django-cms.org/en/latest/how_to/install.html>`_.
+Start with a Django project set up with `Django CMS <https://docs.django-cms.org/en/latest/introduction/01-install.html>`_.
 
 Add ``djangocms_themata`` to the list of plugins:
 
 .. code-block:: python
 
     INSTALLED_APPS += [
+        "cms_bootstrap",    
         "djangocms_themata",
     ]
+
+Migrate the database.
+
+.. code-block:: bash
+
+    python manage.py migrate
 
 Get your templates to extend ``base.html``:
 
 .. code-block:: jinja2
 
     {% extends "base.html" %}
-
-To import stylesheets from bootswatch (https://bootswatch.com/) run this command:
-
-.. code-block:: bash
-
-    ./manage.py importbootswatch
 
 Then navigate to the admin section of the website and go to the djangocms-themata section. Activate the theme that you like there.
 
