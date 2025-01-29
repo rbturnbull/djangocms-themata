@@ -15,13 +15,17 @@
         <div class="themata-body">
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>    
-            
+                    <span class="navbar-toggler-icon"></span>
+                </button>                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         {% main_menu "bootstrap4/menu/navbar.html" %}
-                    </ul>
+                        {% if not user.is_authenticated %}
+                            <span class="nav-item">
+                                <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                            </span>
+                        {% endif %}
+                    </ul>                    
                     {% url 'watson:search' as search_url %}
                     {% if search_url %}
                         <form class="form-inline my-2 my-lg-0" action="{{ search_url }}">
