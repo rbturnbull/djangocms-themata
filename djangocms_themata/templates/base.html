@@ -1,4 +1,4 @@
-{% load cms_tags sekizai_tags menu_tags bootstrap_tags themata static %}
+{% load cms_tags sekizai_tags menu_tags bootstrap_tags themata static i18n %}
 <html>
     <head>
         <title>{% if title %}{{ title }}{% else %}{% page_attribute "page_title" %}{% endif %}</title>
@@ -21,9 +21,13 @@
                     <ul class="navbar-nav mr-auto">
                         {% main_menu "bootstrap4/menu/navbar.html" %}
                         {% if not user.is_authenticated %}
-                            <span class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="{% url 'account_login' %}">Login</a>
-                            </span>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{{user}}&#39;s&nbsp;{% trans "profile" %}</a>
+                            </li>            
                         {% endif %}
                     </ul>                    
                     {% url 'watson:search' as search_url %}
